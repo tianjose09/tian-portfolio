@@ -1,0 +1,146 @@
+.skills__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1.05fr;
+  gap: clamp(32px, 4.5vw, 64px);
+  align-items: start;
+}
+
+.skills__list .section-head {
+  grid-template-columns: 1fr;
+  margin-bottom: 28px;
+}
+
+/* Skill rows — the reference's thin terracotta lines, without made-up percentages */
+.skill-rows {
+  margin: 0;
+}
+.skill-row {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.skill-row::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1.5px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s var(--ease);
+}
+.skill-rows.is-visible .skill-row::after {
+  transform: scaleX(0.28);
+}
+.skill-rows.is-visible .skill-row:nth-child(2)::after { transition-delay: 80ms; }
+.skill-rows.is-visible .skill-row:nth-child(3)::after { transition-delay: 160ms; }
+.skill-rows.is-visible .skill-row:nth-child(4)::after { transition-delay: 240ms; }
+.skill-rows.is-visible .skill-row:nth-child(5)::after { transition-delay: 320ms; }
+.skill-rows.is-visible .skill-row:nth-child(6)::after { transition-delay: 400ms; }
+.skill-row:hover::after {
+  transform: scaleX(1) !important;
+}
+.skill-row dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+.skill-row dd {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+
+/* Quote */
+.skills__quote {
+  margin: 0;
+  padding: 8px clamp(0px, 3vw, 40px) 0;
+  border-right: 1px solid var(--line);
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition-delay: 120ms;
+}
+.skills__quote-mark {
+  font-family: var(--font-serif);
+  font-size: 6rem;
+  line-height: 0.6;
+  height: 0.5em;
+  color: var(--accent);
+}
+.skills__quote p {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  line-height: 1.35;
+}
+
+/* Focus areas */
+.focus-list {
+  display: grid;
+  gap: 26px;
+  padding-top: 8px;
+  transition-delay: 220ms;
+}
+.focus-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+}
+.focus-item__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 0.4s var(--ease), background 0.3s;
+}
+.focus-item:hover .focus-item__icon {
+  transform: rotate(-12deg) scale(1.06);
+  background: var(--ink);
+}
+.focus-item h3 {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.focus-item p {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+@media (max-width: 1060px) {
+  .skills__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .skills__quote {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 36px;
+  }
+}
+
+@media (max-width: 720px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+  .skill-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
